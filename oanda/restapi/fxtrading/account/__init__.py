@@ -1,0 +1,1 @@
+ACCOUNTS_RESOURCE = "/v1/accounts"
