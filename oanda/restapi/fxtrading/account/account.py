@@ -6,6 +6,8 @@ from oanda.restapi.fxtrading.account import ACCOUNTS_RESOURCE
 from oanda import oanda_response, balance, \
     margin_avail, account_currency, margin_rate, unrealized_pl, realized_pl, \
     margin_used, open_trades, USERNAME, account_id, accounts
+
+
 class OandaAccountDataProviderService(AccountDataProvider[int]):
     
     def get_account_info(self, account_id:int) -> Account[int]:

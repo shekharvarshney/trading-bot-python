@@ -5,13 +5,16 @@ USERNAME="cvarshney"
 LIVE = 'LIVE'
 URL_TRADING = "url_trading"
 URL_STREAM = "url_streaming"
+DEFAULT_ACC = "default_account"
 TOKEN = "token"
 ACTIVE_ENV = LIVE
 OANDA_ENV = {LIVE:{
     URL_TRADING:"api-fxtrade.oanda.com", 
-    TOKEN:"b585d9a25841fe180735e7f7ea0ec7cd-9877e09ba5bed932130bd3ed7f4afbe7",
-    URL_STREAM:"stream-fxtrade.oanda.com"}}
+    TOKEN:"SECRET",
+    URL_STREAM:"stream-fxtrade.oanda.com", DEFAULT_ACC: 764454}}
 HTTP_GET = 'GET'
+
+## OANDA JSON KEYS START
 accounts = "accounts";
 account_id = "accountId";
 account_currency = "accountCurrency";
@@ -59,8 +62,18 @@ transaction = "transaction";
 pl = "pl";
 interest = "interest";
 account_balance = "accountBalance";
+## OANDA JSON KEYS END
+
 default_hdrs={'Content-type': 'application/json', 'Authorization':"Bearer {0}".format(OANDA_ENV[ACTIVE_ENV][TOKEN])}
-def oanda_response(uri, params=None, method=HTTP_GET, headers={}):
+CURRENCY_PAIR_SEP="_"
+
+def default_account() -> int:
+    return OANDA_ENV[ACTIVE_ENV][DEFAULT_ACC]
+
+def split_currency_pair(currency_pair) -> list:
+    return currency_pair.split('_')
+
+def oanda_response(uri:str, params:dict=None, method:str=HTTP_GET, headers:dict={}):
     headers.update(default_hdrs)
     oanda_rest_conn=http.client.HTTPSConnection(OANDA_ENV[ACTIVE_ENV][URL_TRADING])
     oanda_rest_conn.request(method,uri,params,headers)
