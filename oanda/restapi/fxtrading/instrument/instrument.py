@@ -3,7 +3,8 @@ from core.fxtrading.instrument.instrument import TradeableInstrument,InstrumentP
 from typing import List
 from core.fxtrading.instrument.iinstrument_data_provider import InstrumentDataProvider
 from oanda.restapi.fxtrading.instrument import INSTRUMENTS_RESOURCE, fields_requested
-from oanda import default_account, oanda_response, interest_rate, instrument, pip,bid,ask, split_currency_pair, instruments
+from oanda import default_account, split_currency_pair
+from oanda.restapi import  oanda_response, interest_rate, instrument, pip,bid,ask, instruments
 
 
 class OandaInstrumentDataProviderService(InstrumentDataProvider[str]):

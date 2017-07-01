@@ -1,4 +1,4 @@
-from core import attributesFromDict
+from core import attributes_from_dict
 from typing import TypeVar, Generic
 from builtins import str, float, int
 
@@ -9,14 +9,14 @@ class InstrumentPairInterestRate:
 
     def __init__(self, base_currency_bid_interest_rate: float=None, base_currency_ask_interest_rate: float=None,
                  quote_currency_bid_interest_rate: float=None, quote_currency_ask_interest_rate: float=None):
-        attributesFromDict(locals())
+        attributes_from_dict(locals())
 
 
 class TradeableInstrument(Generic[T]):
 
     def __init__(self, instrument: str, instrument_id: T=None, pip: float=None, description: str=None,
                  instrument_pair_interest_rate: InstrumentPairInterestRate=None):
-        attributesFromDict(locals())
+        attributes_from_dict(locals())
 
     def __hash__(self):
         return hash(self.instrument, self.instrument_id)

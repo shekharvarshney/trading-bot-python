@@ -3,9 +3,10 @@ from builtins import int
 from core.fxtrading.account.account import Account
 from typing import List
 from oanda.restapi.fxtrading.account import ACCOUNTS_RESOURCE
-from oanda import oanda_response, balance, \
+from oanda import  USERNAME
+from oanda.restapi import oanda_response, balance, \
     margin_avail, account_currency, margin_rate, unrealized_pl, realized_pl, \
-    margin_used, open_trades, USERNAME, account_id, accounts
+    margin_used, open_trades, account_id, accounts
 
 
 class OandaAccountDataProviderService(AccountDataProvider[int]):
